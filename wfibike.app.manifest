@@ -2,7 +2,7 @@ CACHE MANIFEST
 ios7-like-theme.min.css
 jquery.mobile.icons.min.css
 js/cookies.min.js
-js/json_ajax.min.js
+js/json_ajax.js
 images/icons-png/action-black.png
 images/icons-png/action-white.png
 images/icons-png/alert-black.png
