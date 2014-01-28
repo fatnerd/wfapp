@@ -8,10 +8,9 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
-<link href="KaiTi_GB2312/stylesheet.css" rel="stylesheet" type="text/css">
-<!--<script src="js/bubblesort.min.js" type="text/javascript"></script>
+<script src="js/bubblesort.min.js" type="text/javascript"></script>
 <script src="js/cookies.min.js" type="text/javascript"></script>
-<script src="js/charproceed.min.js" type="text/javascript"></script>-->
+<script src="js/distance_cal.min.js" type="text/javascript"></script>
 <script src="js/navito.js" type="text/javascript"></script>
 <link rel="apple-touch-icon" href="/images/bike.png" />
 <link rel="apple-touch-icon-precomposed" href="/images/bike.png" />
@@ -32,10 +31,8 @@ function hideload(a){document.getElementById(a).innerHTML="";}
 	<div data-role="header"><a href="#more" data-role="button">更多</a><a href="#" data-role="button" onclick="location.reload();">刷新</a><h1 style="font-weight:bold;">站 点 列 表</h1>
     </div>
 	<div data-role="content">	
-		<ul data-role="listview">
-			<li><a href="#more">第 2 页</a></li>
-            <li><a href="#detail">第 3 页</a></li>
-			<li><a href="#page4">第 4 页</a></li>
+		<ul data-role="listview" id="mainlist">
+			
 		</ul>		
 	</div>
 </div>
@@ -92,7 +89,6 @@ function hideload(a){document.getElementById(a).innerHTML="";}
       <input type="hidden" id="detaillat" />
       <input type="hidden" id="detaillng" />
         <button onclick="Navitodetail();">导航至此站点</button>
-				
 	</div>
 </div>
 </body>
