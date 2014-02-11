@@ -1,4 +1,6 @@
 CACHE MANIFEST
+# Manifest Version x.x.xxxx ahead yyyymmdd
+list.html
 ios7-like-theme.min.css
 jquery.mobile.icons.min.css
 js/cookies.min.js
@@ -105,3 +107,9 @@ images/icons-png/user-white.png
 images/icons-png/video-black.png
 images/icons-png/video-white.png
 images/ajax-loader.gif
+http://code.jquery.com/jquery-2.1.0.min.js
+http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css
+http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js
+http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.map
+NETWORK:
+http://218.93.33.59:85/map/wfmap/ibikeinterface.asp

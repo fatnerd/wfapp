@@ -1,3 +1,20 @@
+/*  WFiBike_app: Weifang Public Bicycle HTML5(Cross-Platform) App
+    Copyright (C) 2014  js,w
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    Contact: l.lllkj@163.com  with a header contains "[pj_WFiBike_APP]"
+*/
 $.ajaxSetup({cache:true,async:true});
 function fillDetail(stationID) {
 	showload("detload"); 
@@ -41,46 +58,20 @@ function refreshDetail(){
 }
 
 function fillList(){
-	getLocation();
-	$.getScript("http://218.93.33.59:85/map/wfmap/ibikestation.asp",function() {
-		if (navigator.geolocation || (!mylat && !mylng)) {
+	//getLocation();
+	$.getScript("http://218.93.33.59:85/map/wfmap/ibikeinterface.asp",function() {
+	    //some location stuff
 		for (var i in ibike.station) {
-			ibike.station[i].distance=GetDistance(mylat,mylng,ibike.station[i].lat,ibike.station[i].lng);
+			var itemli = document.createElement("li");
+			var itema = document.createElement("a");
+			itema.setAttribute("href", "#detail");
+			itema.id="stat"+(ibike.station[i].id-1);
+			itema.setAttribute("onclick",("fillDetail("+ibike.station[i].id+");"));
+			itema.setAttribute("arrayid", (ibike.station[i].id-1));
+			itema.innerHTML = ibike.station[i].id+". "+ibike.station[i].name+"&nbsp;&nbsp;&nbsp;&nbsp;"+"剩"+ibike.station[i].availBike+"/"+(ibike.station[i].capacity-ibike.station[i].availBike)+"空"
+			itemli.appendChild(itema);
+			document.getElementById('mainlist').appendChild(itemli);
+			$("#mainlist").listview("refresh");
 		}
-		ibike.station = bubbleSort2(ibike.station)
-		for (var i in ibike.station) {
-			//TODO: Output
-			var li = document.createElement("li");
-			var a = document.createElement("a");
-			a.setAttribute("href", "#detail");
-			a.id="stat" + i
-			a.onclick = fillDetail(ibike.station[i].id);
-			a.innerHTML = ibike.station[i].id + ". " + ibike.station[i].name + "&nbsp;&nbsp;&nbsp;";
-			li.appendChild(a);
-			document.getElementById('mainlist').appendChild(li);
-		}
-		} else {
-		ibike.station = bubbleSort(ibike.station);
-		for (var i in ibike.station) {
-			//TODO: Output
-			var li = document.createElement("li");
-			li.id = "mainli"+ibike.station[i].id;
-			var a = document.createElement("a");
-			a.setAttribute("href", "#detail");
-			a.id="stat" + i
-			a.onclick = fillDetail(ibike.station[i].id);
-			a.innerHTML = ibike.station[i].id + ". " + ibike.station[i].name + "&nbsp;&nbsp;&nbsp;";
-			li.appendChild(a);
-			document.getElementById('mainlist').appendChild(li);
-		}}
-		//TODO get 5 amount.
-		for (var j=0;j<5;j++) {
-			var idbike = document.getElementById('stat'+i).parentNode.id
-			idbike.replace(/mainli/,"");
-			var uri="http://218.93.33.59:85/map/wfmap/ibikeinterface.asp?id=" + idbike;
-			$.getScript(uri, function(){
-				document.getElementById('stat'+i).innerHTML += "剩" + isinglebike.station[0].availBike + "&nbsp;空" + (isinglebike.station[0].capacity - isinglebike.station[0].availBike);
-			});
-		}
-		});
+	});
 }
