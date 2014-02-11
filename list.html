@@ -39,6 +39,7 @@
 <script>
 function showload(a){document.getElementById(a).innerHTML="<center>载入中…………=v=</center>";}
 function hideload(a){document.getElementById(a).innerHTML="";}
+setTimeout(fillList(),3000);
 </script>
 <script src="js/json_ajax.js" type="text/javascript"></script>
 <!--[if lte IE 8]>
@@ -54,13 +55,14 @@ Change to chrome now!</center>
 	<h1 style="font-weight:bold;">站点列表</h1>
     </div>
 	<div data-role="content">	
+    <center><span id="mainload"></span></center>
 		<ul data-role="listview" id="mainlist">
 			
 		</ul>		
 	</div>
 </div>
 
-<div data-role="page" id="more" data-content-theme="a">
+<div data-role="page" id="more" data-content-theme="a" data-transition="slide">
 	<div data-role="header" data-position="fixed" data-tap-toggle="false" ><a href="#" data-role="button" onclick="history.go(-1);" data-icon="back" data-iconpos="notext">返回</a>
 		<h1>更多功能</h1>
 	</div>
