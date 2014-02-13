@@ -1,5 +1,6 @@
 CACHE MANIFEST
 # Manifest Version x.x.xxxx ahead yyyymmdd
+# Latest comment hash: <Fill when publish>
 list.html
 ios7-like-theme.min.css
 jquery.mobile.icons.min.css
@@ -112,4 +113,5 @@ http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css
 http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js
 http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.map
 NETWORK:
+*
 http://218.93.33.59:85/map/wfmap/ibikeinterface.asp
