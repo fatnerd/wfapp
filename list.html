@@ -47,7 +47,7 @@ jQuery 2.x is no longer support IE6/7/8
 Change to chrome now!</center>
 <![endif]-->
 </head> 
-<body> 
+<body > 
 
 <div data-role="page" id="mainpage" data-content-theme="a">
 	<div data-role="header" data-position="fixed" data-tap-toggle="false" ><a href="#more" data-role="button" data-icon="gear" data-iconpos="notext">更多</a><a href="#" data-role="button" onclick="fillList();" data-icon="refresh" data-iconpos="notext">刷新</a>
@@ -117,7 +117,8 @@ Change to chrome now!</center>
       </ul>
       <input type="hidden" id="detaillat" />
       <input type="hidden" id="detaillng" />
-        <button onclick="Navitodetail();">导航至此站点</button>
+      <div data-role="controlgroup" data-type="horizontal" align="center"><button onclick="Navitodetail();">预览静态地图</button><button onclick="Navitodetail();">导航至此站点</button></div>
+
 	</div>
 </div>
 </body>
