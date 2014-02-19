@@ -23,9 +23,9 @@
 <title>潍坊公共自行车</title>
 <link rel="stylesheet" href="ios7-like-theme.min.css" />
 <link rel="stylesheet" href="jquery.mobile.icons.min.css" />
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.1.min.css" />
 <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.js"></script>
 <!--<script src="js/bubblesort.min.js" type="text/javascript"></script>-->
 <script src="js/cookies.min.js" type="text/javascript"></script>
 <!--<script src="js/distance_cal.min.js" type="text/javascript"></script>-->
@@ -42,9 +42,7 @@ function hideload(a){document.getElementById(a).innerHTML="";}
 </script>
 <script src="js/json_ajax.js" type="text/javascript"></script>
 <!--[if lte IE 8]>
-<center>What the fuck iexplore that you used? 
-jQuery 2.x is no longer support IE6/7/8 
-Change to chrome now!</center>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <![endif]-->
 </head> 
 <body> 
@@ -53,10 +51,13 @@ Change to chrome now!</center>
 	<div data-role="header" data-position="fixed" data-tap-toggle="false" ><a href="#more" data-role="button" data-icon="gear" data-iconpos="notext">更多</a><a href="#" data-role="button" onclick="fillList();" data-icon="refresh" data-iconpos="notext">刷新</a>
 	<h1 style="font-weight:bold;">站点列表</h1>
     </div>
-	<div data-role="content">	
+	<div data-role="content">
+	<form class="ui-filterable">
+    	<input id="filterinput" data-type="search">
+	</form>
     <center><div id="mainload">轻触刷新键来初始化主列表(141KB)</div></center>
     
-		<ul data-role="listview" id="mainlist">
+		<ul data-role="listview" id="mainlist" data-filter="true" data-input="#filterinput">
 			
 		</ul>		
 	</div>
@@ -102,6 +103,7 @@ Change to chrome now!</center>
 	</div>
 	<div data-role="content">
     <center><span id="detload"></span></center>
+    <img src="http://api.map.baidu.com/staticimage?center=116.403874,39.914888&width=300&height=200&zoom=14" width=75%>
 	  <ul data-role="listview" data-inset="true">
         <li><span style="font-weight:bold;">站点ID</span><span class="ui-content" id="detailid">1</span></li>
 	    <li><span style="font-weight:bold;">站点名称</span><span class="ui-content" id="detailname">安顺东区站</span></li>
