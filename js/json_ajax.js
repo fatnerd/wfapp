@@ -58,25 +58,29 @@ function refreshDetail(){
 }
 
 function fillList(){
-	document.getElementById('mainload').innerHTML="Pending data from remote server......";
+	$('#mainload').text("Pending data from remote server......");
 	document.getElementById('mainlist').innerHTML="";
 	//getLocation();
 	$.getScript("http://218.93.33.59:85/map/wfmap/ibikeinterface.asp",function() {
-        document.getElementById('mainload').innerHTML="Parsing to list, wait patient......";
-		$.parse
+        $('#mainload').text("Parsing to list(15s), wait patient......");
 	    //some location stuff
-		for (var i in ibike.station) {
-			var itemli = document.createElement("li");
-			var itema = document.createElement("a");
-			itema.setAttribute("href", "#detail");
-			itema.id="stat"+(ibike.station[i].id-1);
-			itema.setAttribute("onclick",("fillDetail("+ibike.station[i].id+");"));
-			itema.setAttribute("arrayid", (ibike.station[i].id-1));
-			itema.innerHTML = ibike.station[i].id+". "+ibike.station[i].name+"&nbsp;&nbsp;&nbsp;&nbsp;"+"剩 "+ibike.station[i].availBike+" / "+(ibike.station[i].capacity-ibike.station[i].availBike)+" 空"
-			itemli.appendChild(itema);
-			document.getElementById('mainlist').appendChild(itemli);
-			$("#mainlist").listview("refresh");
-			hideload("mainload");
-		}
+		$.noop();
+		listprocess=function(){
+			for (var i in ibike.station) {
+				var itemli = document.createElement("li");
+				var itema = document.createElement("a");
+				itema.setAttribute("href", "#detail");
+				itema.id="stat"+(ibike.station[i].id-1);
+				itema.setAttribute("onclick",("fillDetail("+ibike.station[i].id+");"));
+				itema.setAttribute("arrayid", (ibike.station[i].id-1));
+				itema.innerHTML = ibike.station[i].id+". "+ibike.station[i].name+"&nbsp;&nbsp;&nbsp;&nbsp;"+"剩 "+ibike.station[i].availBike+" / "+(ibike.station[i].capacity-ibike.station[i].availBike)+" 空"
+				itemli.appendChild(itema);
+				document.getElementById('mainlist').appendChild(itemli);
+				$("#mainlist").listview("refresh");
+				hideload("mainload");
+				delete listprocess;
+			}
+		};
+		setTimeout(listprocess, 500);
 	});
 }
