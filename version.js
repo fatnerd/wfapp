@@ -17,6 +17,8 @@
     Contact: l.lllkj@163.com  with a header contains "[pj_WFiBike_APP]"
 */
 //Version Acquire File
-var latestVersion="1.0.0";
+var latestVersion="0.1.0";
 var latestChangeLog="";
-var latestVerdate
+var latestVerdate;
+var requireRefresh;
+var isBeta;
