@@ -1,5 +1,4 @@
-var mylat=0;
-var mylng=0;
+
 function Rad(d){
        return d * Math.PI / 180.0;
     }
@@ -15,16 +14,13 @@ function GetDistance(lat1,lng1,lat2,lng2){
 		s = s * 1000; //to Meter
         //s=s.toFixed(4);
         return s;
-    }
-function getLocation(){
-  if (navigator.geolocation)
-    {
-    navigator.geolocation.getCurrentPosition(defPosition);
-    }
-  }
-function defPosition(position)
-  {
-  mylat = position.coords.latitude;
-  mylng = position.coords.longitude;
-  }
-  getLocation();
+}
+function distFiller(point,station,callback) {
+	var mlat=point.latitude;
+	var mlng=point.longitude;
+	for (var i in station){
+		station[i].distance=GetDistance(mlat,mlng,station[i].lat,station[i].lng);
+	}
+	var station2 = bubbleSort2(station);
+	callback(station2);
+}

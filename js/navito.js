@@ -15,23 +15,15 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
     Contact: l.lllkj@163.com  with a header contains "[pj_WFiBike_APP]"
 */
-    var sUserAgent = navigator.userAgent.toLowerCase();   
-    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";     
-    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";    
-    var bIsAndroid = sUserAgent.match(/android/i) == "android";     
 function Navitodetail(){
 	var lat=document.getElementById('detaillat').value;
 	var lng=document.getElementById('detaillng').value;
-		if (bIsIpad || bIsIphoneOs){
-			var uri="iosamap://navi?sourceApplication=safari&backScheme=safari&dlat="+lat+"&dlon="+lng+"&dev=0&m=2&t=4";
-			window.open(uri);
-		}
-		else if (bIsAndroid) {
-			var uri="androidamap://route?sourceApplication=browser&dlat="+lat+"&dlon="+lng+"&dev=0&m=2&t=4&showType=1"
-			window.open(uri); 
-		}
-		else {
-			var uri="http://mo.amap.com/?&to="+lat+","+lng+"(目标站点)&type=0&opt=2&dev=0"
-			window.open(uri);
-		}
+	var name=document.getElementById("detailname").innerHTML;
+	if (useBMap){
+    	window.open("baidumap://map/marker?location="+lat+","+lng+"&title=目标站点&content="+name+"&coord_type=gcj02&src=jsw|wfibikeapp");
+	} else if (useAMap){
+		window.open("iosamap://navi?sourceApplication=safari&backScheme=http&dlat="+lat+"&dlon="+lng+"&dname="+name+"&dev=0&t=4");
+	} else {
+		alert("您没有设置导航应用！");
+	}
 }
