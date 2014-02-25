@@ -14,6 +14,14 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
 <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+<script>
+$("document").ready(function(){
+    if (navigator.standalone){
+    document.getElementByID("jumping").style="";
+    location.href="list.html";
+  });
+
+</script>
 </head>
 
 <body>
@@ -22,7 +30,7 @@
     <h1>潍坊公共自行车</h1><a href="#" onclick="location.href='list.html';"  data-role="button">跳过</a>
     </div>
   <div data-role="content">
-    <ul data-role="listview" data-inset="true" data-theme="f" style="display:none;">
+    <ul data-role="listview" data-inset="true" data-theme="f" style="display:none;" id="jumping">
       <li><div align="center" style="font-size:smaller">请等候一会，网页将尽快跳转到App主页。</div></li>
     </ul>
     <div>
