@@ -1,5 +1,5 @@
 <!doctype html>
-<html manifest="wfibike.app.manifest">
+<html>
 <head>
 <meta charset="utf-8">
 <title>潍坊公共自行车</title>
@@ -15,18 +15,19 @@
 <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
 <script>
-$("document").ready(function(){
+$(document).ready(function(e){
     if (navigator.standalone){
     document.getElementByID("jumping").style="";
     location.href="list.html";
-  });
-
+    }
+});
+  
 </script>
 </head>
 
 <body>
 <div data-role="page" id="page1">
-  <div data-role="header">
+  <div data-role="header" data-position="fixed">
     <h1>潍坊公共自行车</h1><a href="#" onclick="location.href='list.html';"  data-role="button">跳过</a>
     </div>
   <div data-role="content">
@@ -36,9 +37,9 @@ $("document").ready(function(){
     <div>
     <center><img src="images/bike.png" class="ui-corner-all"></center><hr>
 
-    <div style="font-size: x-large; font-weight: bold; color: #F00;" align="center">没有添加到主屏幕</div>
-    <div style="font-size: middle; font-family: arial;">　　本程序为WebApp移动轻应用，将其添加到主屏幕可获取最佳使用体验。不会占用本地空间。(Android用户请自觉无视本警告。)</div>
-    <div style="font-size: middle; font-family: arial;">　　如确信不想添加，请点击标题栏上“跳过”按钮。</div><hr>
+    <div style="font-size: x-large; font-weight: bold; color: #F00; font-family: '黑体';" align="center">没有添加到主屏幕</div>
+    <div style="font-size: middle; font-family: arial;">　　本程序为WebApp移动轻应用，将其添加到主屏幕可获取最佳使用体验。不会占用本地空间。</div>
+    <div style="font-size: middle; font-family: arial;">　　如确信不想添加(或仅仅是来测试)，请点击标题栏上“跳过”按钮。</div><hr>
 请按 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAeCAQAAADu6HTYAAADPElEQVR4Xq3TX2gcRRzA8e/M7mVv2+TSNpc/TZtrY6jUGqgaSAmEChKLrYK0YH0RFC2CSCkEfCghiKU04J8qNigq6os+iQV98MHWFwVBrQQRWs21lBw5cw3NNb1/udu72RGG5Y77IzXW77D7sAwf5scyYoL6BGXSDKFZwaGpLvIUaeoCkvX1MmsM0Ny6oRSQYOLuIS+YZOpfQdqslpUxcZrzTVAz4qPwW2O3CeIwC/RSzeY6Ow1QhUrkr+YOWfEKDkEP8Rij7CHKJmrFSDHBdwGEE5wiGChPN+PnT8VdRtEIl1d4gRj/1EVe5ZSBKGh8iqQpo/Fo5+3C/gz0MYg4zgwbqday1/Q4B8BGQ45d/Hi54lakCrU5obOcidJpu1+Lg9whjabyaOYLnrIBFFaRD+xe2ybMDWY66GmP/WA9cGfGp0CWhy0wkMN8inepFiH2rV1j0NQSNQbFLRQnS8/8YSDBBpadfv4CYDub2fmeHDNAsL1MBWUel0iA+Xik6eHcyvD3vAMSU1TGuA/YRS+dD7ovCQN43GKRFCU20Kd3V/avDVVyAZ5niTEuLA5/zBGWg9EEEhfJKN200Tat8CmRAQb9+wv7soPlHt2tQorsz1uPbr0HTY4sJwrH47zJZwABBAKLMBoQXepwgTwdHCo+fXMkQ4lrxEmQ5AaXipPqDY9V2vn09tgvTPI71EEGYxM+/uMJLJ4svpgaWGKOi/xKgmqLSUGSUd5f2vIVJ/CgBaTIUsZ7ZBsn0+NzfMOXLFCXQyTcybN6ep5ZZgUOHn7jpfUpsZshdugPGf+E5zjbyHTSRyQ8xfRPPM/s63RHeuknSoT22mjmmnAOIMkUZ6D1xSfPPAfd1WFKM3sO2CMaHx8M1NjnXKHaAGGkOW0C02WeYHUz4qMtx+w5gUDS8NckYe5lHsMYwCZEPyEEmjLDZFmAS7CDviMdxyTkMNVBKEmYLvbiQQBIBBbCQG04bGQvFWz6CfsCQLWCigILFwcfkGYBiOpbYuOizTAyYyDdCtrGaRG1LCkIgMYEFhI0WqQZoSlbGRyHKe4qOx7iv2bVQW9dp4dlM/x6kmwnWQcd/Q3FCqwTEiT5s+6D5v/pb0SSHyg7uhMWAAAAAElFTkSuQmCC" width="23"> (&nbsp;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAA8CAYAAAAQTCjdAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAASCQAAEgkB80sG3AAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKjSURBVGiB7dpPiFVVHMDxz7m9NCtMyI2bEJEC25WrEkzHUXCRraIwdNE8ZxfYIlcis1ZEbGEzT1QCF4XgH1CyWhUoJKIWNRGEiCNKmkSiYTzfcfGuOokx77x3ZlS8382959zfn+/invvn3RdijHIRBrwkOINCYXEcdjpb7VyiYdBsLScwt5y6IloYdzqXo36Ro0gY9IKWo+5JwmzBt2HQnBw9ehYNazyn5TBee8Dh+Vq+CWu92GufnkTDR6ab7gDeBNHouMM/l9tXTXM0fGBmL726Fg1Dam74EsvKqR8VNowL2Yzj5f7rnnE4DHq2235diYYhhTGfC94up35T0y+6di/ITU0rKVd+sEi0P7xr2pSJOu8zvF+OzqEv7vDH/WFxt7/cshy/ticsN8sXYUht0kXDOlsF9XJ4UaEvNoz9X3zc5bKaZThbyr5jzJ4wlNY7KTgM+ES0vhz+KeiPw36fKC/ucAF9uFBOrTZm26SJCtaV27+xIo7cXdkTEhvOoh+XyxprU1qnim7CQdGK2HAyKRexYVShT3RItDElN+mkjiP2Ym+S3f01hv2EVal5WW6hU0ElmptaqJuBpXg6MbeFH2LDpU6CQ93zWIKnEvs0cayGU3glMfkOo1jQYewZzOuyz7FC95Jwo5OgUFfgeg993hh/eTqCTxOSm/iuk8DY0Ap1b2GhtHXxsfZN4j/X0fOx4auEIknEhqv4OiUn1L13Z/+xWfWVaG4q0dxUormpRHNTieamEs1NJZqbJ1Q0jHvdiJo5S2cVjSNOCHZhn3/SnuYnIvl3yomIIz7MXZMn9hydRCrR3FSiualEc1OJ5qYSzU0lmptKNDePjWgwcPePT7/g+4cp8wCW4GXaryK3tL+mLdD5x62ppllgu7bso8q/2HIbzGWdNmWnSJwAAAAASUVORK5CYII=" width="13"> in iOS 7)&nbsp;然后轻触&nbsp;<br><strong><center>添加至主屏幕</center></strong>
 </div>
 </div>
@@ -49,7 +50,7 @@ $("document").ready(function(){
   <a href="firstconfig.html" data-role="button" class="ui-btn-right">下一步 ></a>  </div>
   <div data-role="content">
   <center><img src="images/safari.jpg" width=256></center>
-  <div style="font-size:small;">　　您是第一次使用本应用，为了增强您的体验，请随着我们进行首次配置。您可以按照您的喜好进行选择，同时，我们也会通过首次设置来使您熟悉本应用。在有重大更新时需要重新设置。您可以手动重置本应用来回到此页面。<br><strong>点击“下一步”来开始</strong></div>
+  <div style="font-size:small;">　　您是第一次使用本应用，为了增强您的体验，请随着我们进行首次配置。您可以按照您的喜好进行选择，同时，我们也会通过首次设置来使您熟悉本应用。在有重大更新时需要重新设置。您可以手动重置本应用来回到此页面。<br><strong><center>点击“下一步”来开始</center></strong></div>
   
   </div>
 </div>
