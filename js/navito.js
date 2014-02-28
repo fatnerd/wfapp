@@ -25,5 +25,6 @@ function Navitodetail(){
 		window.open("iosamap://navi?sourceApplication=safari&backScheme=http&dlat="+lat+"&dlon="+lng+"&dname="+name+"&dev=0&t=4");
 	} else {
 		alert("您没有设置导航应用！");
+		alert("debug comment:\nType to URL to set AMap: javascript:useAMap=true; \n likely on BMap \n Need Application");
 	}
 }

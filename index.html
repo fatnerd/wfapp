@@ -2,8 +2,8 @@
 <html manifest="wfibike.app.manifest">
 <head>
 <meta charset="utf-8">
-<title>无标题文档</title>
-<link rel="apple-touch-icon-precomposed" href="images/bike.png" />
+<title>潍坊公共自行车</title>
+<link rel="apple-touch-icon" href="images/bike.png" />
 <meta content="telephone=no" name="format-detection" />
 <meta content="email=no" name="format-detection" />
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
@@ -14,19 +14,27 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
 <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+<script>
+$("document").ready(function(){
+    if (navigator.standalone){
+    document.getElementByID("jumping").style="";
+    location.href="list.html";
+  });
+
+</script>
 </head>
 
 <body>
 <div data-role="page" id="page1">
   <div data-role="header">
-    <h1>潍坊公共自行车</h1><a href="#" data-role="button">跳过</a>
+    <h1>潍坊公共自行车</h1><a href="#" onclick="location.href='list.html';"  data-role="button">跳过</a>
     </div>
   <div data-role="content">
-    <ul data-role="listview" data-inset="true" data-theme="f" style="display:none;">
+    <ul data-role="listview" data-inset="true" data-theme="f" style="display:none;" id="jumping">
       <li><div align="center" style="font-size:smaller">请等候一会，网页将尽快跳转到App主页。</div></li>
     </ul>
     <div>
-    <center><img src="images/bike.png"></center><hr>
+    <center><img src="images/bike.png" class="ui-corner-all"></center><hr>
 
     <div style="font-size: x-large; font-weight: bold; color: #F00;" align="center">没有添加到主屏幕</div>
     <div style="font-size: middle; font-family: arial;">　　本程序为WebApp移动轻应用，将其添加到主屏幕可获取最佳使用体验。不会占用本地空间。(Android用户请自觉无视本警告。)</div>
@@ -38,10 +46,10 @@
 <div data-role="page" id="pageset">
   <div data-role="header" data-position="fixed" data-tap-toggle="false">
     <h1>应用首次设置</h1>
-  <a href="#" data-role="button" class="ui-btn-right">下一步 ></a>  </div>
+  <a href="firstconfig.html" data-role="button" class="ui-btn-right">下一步 ></a>  </div>
   <div data-role="content">
   <center><img src="images/safari.jpg" width=256></center>
-  <div style="font-size:small;">　　您是第一次使用本应用，为了增强您的体验，请随着我们进行首次配置。您可以按照您的喜好进行选择，同时，我们也会通过首次设置来使您熟悉本应用。设置有效期为5年，5年后您将需要重新设置。同时在有重大更新时也需要重新设置。您可以手动重置本应用来回到此页面。<br><strong>点击“下一步”来开始</strong></div>
+  <div style="font-size:small;">　　您是第一次使用本应用，为了增强您的体验，请随着我们进行首次配置。您可以按照您的喜好进行选择，同时，我们也会通过首次设置来使您熟悉本应用。在有重大更新时需要重新设置。您可以手动重置本应用来回到此页面。<br><strong>点击“下一步”来开始</strong></div>
   
   </div>
 </div>

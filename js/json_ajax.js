@@ -36,7 +36,7 @@ function fillDetail(stationID) {
 			   //var newdata=eval("("+data+")");
 			   var newlng=window.atob(data.x);
 			   var newlat=window.atob(data.y);
-			   document.getElementById("detailstatmap").src="http://api.map.baidu.com/staticimage?center="+newlng+","+newlat+"&markers="+newlng+","+newlat+"&width=290&height=232&zoom=17&dpitype=ph";
+			   document.getElementById("detailstatmap").src="http://api.map.baidu.com/staticimage?center="+newlng+","+newlat+"&markers="+newlng+","+newlat+"&width=270&height=216&zoom=17&dpitype=ph";
 			   }
 		   );
 	   
