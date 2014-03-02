@@ -25,7 +25,7 @@
 <body>
 <div data-role="page" id="page1">
   <div data-role="header" data-position="fixed">
-    <h1>首次设置 - 1</h1><a href="#page2" data-role="button" class="ui-btn-right" onclick="$.get('LICENSE',function(result){$('#eulacontainers').text(result);});">下一步 ></a>
+    <h1>首次设置 - 0</h1><a href="#page2" data-role="button" class="ui-btn-right" onclick="$.get('LICENSE',function(result){$('#eulacontainers').text(result);});">下一步 ></a>
     </div>
   <div data-role="content">
   <div data-inset="true" class="ui-body-a ui-bar-a ui-corner-all">
@@ -43,14 +43,36 @@
 </div>
 </div>
 <div data-role="page" id="page2">
+<script>
+function checkeula(){
+	if ($("#accept_0").is(':checked')){
+		$("#eulanext").attr("style","");
+	} else {
+		$("#eulanext").attr("style","display:none;");
+	}
+}
+		$("#eulanext").attr("style","display:none;");
+</script>
   <div data-role="header" data-position="fixed"><a href="#page1" data-role="button" data-inline="true" data-icon="back">返回</a>
     <h1>最终用户使用协议</h1>
-  <a href="#" data-role="button">同意</a>  </div>
+  <a href="#page3" data-role="button" id="eulanext" class="ui-btn-right" style="display:none;">同意</a>  </div>
   <div data-role="content">
     <div class="ui-listview">
     <textarea readonly id="eulacontainers" style="font-size:smaller;" contenteditable="false">loading</textarea>
     </div>
+    <div data-role="fieldcontain" class="ui-mini">
+
+        <input type="checkbox" name="accept" id="accept_0" class="custom" value="" onclick="checkeula();" />
+        <label for="accept_0">我同意GNU GPLv3软件使用共享协议<br>I Accept the GNU GPLv3 License</label>
+    </div>
+    
   </div>
+</div>
+<div data-role="page" id="page3">
+  <div data-role="header" data-position="fixed">
+    <h1>首次设置 - 1</h1>
+  </div>
+  <div data-role="content">内容</div>
 </div>
 
 </body>
