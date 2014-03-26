@@ -20,20 +20,15 @@ function fillDetail(stationID) {
 	showload("detload"); 
 	detnow=stationID;
 	$.getScript("http://218.93.33.59:85/map/wfmap/ibikeinterface.asp?id=" + stationID,function() {
-	   if (withGPS){
-		   getLocation(function(position){
-		   	var mlat=position.coords.latitude;
-			var mlng=position.coords.longitude;
+	   if (sessionStorage.withGPS){
+		   	var mlat=sessionStorage.GPSlat;
+			var mlng=sessionStorage.GPSlng;
 			document.getElementById('detaildistance').innerHTML=GetDistance(mlat,mlng,isinglebike.station[0].lat,isinglebike.station[0].lng);
-		   },function(){
-			   document.getElementById('detaildistance').innerHTML="Unavailible";
-		   })
 	   }else{document.getElementById('detaildistance').innerHTML="Unavailible";}
 	   //Loading Static Map First
 	   
 	   $.getJSON("http://api.map.baidu.com/ag/coord/convert?from=2&to=4&x="+isinglebike.station[0].lng+"&y="+isinglebike.station[0].lat+"&callback=?",
 		   function(data){
-			   //var newdata=eval("("+data+")");
 			   var newlng=window.atob(data.x);
 			   var newlat=window.atob(data.y);
 			   document.getElementById("detailstatmap").src="http://api.map.baidu.com/staticimage?center="+newlng+","+newlat+"&markers="+newlng+","+newlat+"&width=270&height=216&zoom=17&dpitype=ph";
@@ -58,7 +53,7 @@ function fillDetail(stationID) {
 		   document.getElementById('detailli1').setAttribute("data-theme", "c");
 		   }
 	   else if ((isinglebike.station[0].availBike <= 6) && (isinglebike.station[0].availBike > 3)) {
-		   document.getElementById('detailli1').setAttribute("data-theme", "f");
+		   document.getElementById('detailli1').setAttribute("data-theme", "e");
 		   }
 	   else { 
 	   document.getElementById('detailli1').setAttribute("data-theme", "d");
@@ -67,7 +62,7 @@ function fillDetail(stationID) {
 		   document.getElementById('detailli2').setAttribute("data-theme", "c");
 		   }
 	   else if ((bikeleft <= 6) && (bikeleft > 3)) {
-		   document.getElementById('detailli2').setAttribute("data-theme", "f");
+		   document.getElementById('detailli2').setAttribute("data-theme", "e");
 		   } 
 	   else { document.getElementById('detailli2').setAttribute("data-theme", "d");}
 	   $('#detailnumlist').listview('refresh');
@@ -83,41 +78,36 @@ function fillList(){
 	document.getElementById('mainlist').innerHTML="";
 	//getLocation();
 	$.getScript("http://218.93.33.59:85/map/wfmap/ibikeinterface.asp",function() {
-		getLocation(function(position){
-			distFiller(position.coords, ibike.station, fillListwPos);
-		},fillListwoPos);
+		if (sessionStorage.withGPS){
+			distFiller(sessionStorage.GPSlat, sessionStorage.GPSlng, ibike.station, fillListwPos);}
+		else{fillListwoPos();}
 	});
 }
 function fillListwPos(station){
         $('#mainload').text("Parsing to list(15s), wait patient......");
-	    //some location stuff
-		withGPS=true;
+		setTimeout(function(){
 			for (var i in station) {
-				var itemli = document.createElement("li");
-				var itema = document.createElement("a");
-				itema.setAttribute("href", "#detail");
+				var itemli = "<li></li>";
+				var itema = "<a href=\"#detail\"></a>";
 				itema.id="stat"+(station[i].id-1);
 				itema.setAttribute("distance",station[i].distance);
-				itema.setAttribute("onclick",("fillDetail("+station[i].id+");"));
+				itema.setAttribute("ontouchstart",("fillDetail("+station[i].id+");"));
 				itema.setAttribute("arrayid", (station[i].id-1));
 				itema.innerHTML = station[i].id+". "+station[i].name+"&nbsp;&nbsp;&nbsp;&nbsp;"+"剩 "+station[i].availBike+" / "+(station[i].capacity-station[i].availBike)+" 空"
 				itemli.appendChild(itema);
 				document.getElementById('mainlist').appendChild(itemli);
 				$("#mainlist").listview("refresh");
-			}				hideload("mainload");
+			}				hideload("mainload");},100);
 }
 function fillListwoPos(){
 
         $('#mainload').text("Parsing to list(15s), wait patient......");
-	    //some location stuff
-		withGPS=false;
 		setTimeout(function(){
 			for (var i in ibike.station) {
-				var itemli = document.createElement("li");
-				var itema = document.createElement("a");
-				itema.setAttribute("href", "#detail");
+				var itemli = "<li></li>";
+				var itema = "<a href=\"#detail\"></a>";
 				itema.id="stat"+(ibike.station[i].id-1);
-				itema.setAttribute("onclick",("fillDetail("+ibike.station[i].id+");"));
+				itema.setAttribute("ontouchstart",("fillDetail("+ibike.station[i].id+");"));
 				itema.setAttribute("arrayid", (ibike.station[i].id-1));
 				itema.innerHTML = ibike.station[i].id+". "+ibike.station[i].name+"&nbsp;&nbsp;&nbsp;&nbsp;"+"剩 "+ibike.station[i].availBike+" / "+(ibike.station[i].capacity-ibike.station[i].availBike)+" 空"
 				itemli.appendChild(itema);

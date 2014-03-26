@@ -15,9 +15,7 @@ function GetDistance(lat1,lng1,lat2,lng2){
         //s=s.toFixed(4);
         return s;
 }
-function distFiller(point,station,callback) {
-	var mlat=point.latitude;
-	var mlng=point.longitude;
+function distFiller(mlat,mlng,station,callback) {
 	for (var i in station){
 		station[i].distance=GetDistance(mlat,mlng,station[i].lat,station[i].lng);
 	}

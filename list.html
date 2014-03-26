@@ -21,36 +21,39 @@
 <head>
 <meta charset="utf-8">
 <title>潍坊公共自行车</title>
-<link rel="stylesheet" href="ios7-like-theme.min.css" />
+<link rel="stylesheet" href="ios7-theme-v0.2.min.css" />
 <link rel="stylesheet" href="jquery.mobile.icons.min.css" />
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
+<script src="js/geolocation.js" type="text/javascript"></script>
+<script>
+function showload(a){document.getElementById(a).innerHTML="<center>载入中…………=v=</center>";}
+function hideload(a){document.getElementById(a).innerHTML="";}
+getLocation(function(position){
+	sessionStorage.withGPS=true;
+	sessionStorage.GPSlat=position.coords.latitude;
+	sessionStorage.GPSlng=position.coords.longitude;
+	},function(){
+		sessionStorage.withGPS=false;
+});
+function BlockMove(event) {event.preventDefault() ;}
+</script>
 <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
 <script src="js/bubblesort.js" type="text/javascript"></script>
-<script src="js/cookies.min.js" type="text/javascript"></script>
 <script src="js/distance_cal.js" type="text/javascript"></script>
 <script src="js/navito.js" type="text/javascript"></script>
-<script src="js/jquery.base64.js" type="text/javascript"></script>
-<script src="js/geolocation.js" type="text/javascript"></script>
 <link rel="apple-touch-icon-precomposed" href="images/bike.png" />
 <meta content="telephone=no" name="format-detection" />
 <meta content="email=no" name="format-detection" />
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<script>
-if (!window.btoa) window.btoa = $.base64.btoa;
-if (!window.atob) window.atob = $.base64.atob;
-function showload(a){document.getElementById(a).innerHTML="<center>载入中…………=v=</center>";}
-function hideload(a){document.getElementById(a).innerHTML="";}
-getLocation(function(){withGPS=true;},function(){withGPS=false;});
-</script>
 <script src="js/json_ajax.js" type="text/javascript"></script>
 <!--[if lte IE 8]>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <![endif]-->
 </head> 
-<body > 
+<body ontouchmove="BlockMove(event);"> 
 
 <div data-role="page" id="mainpage" data-content-theme="a">
 	<div data-role="header" data-position="fixed" data-tap-toggle="false" ><!--<a href="#more" data-role="button" data-icon="gear" onClick="alert('荒地尚未开垦');return false;">更多</a>--><a href="#" data-role="button" onclick="fillList();" data-icon="refresh" data-iconpos="notext" class="ui-btn-right">刷新</a>
