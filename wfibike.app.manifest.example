@@ -1,10 +1,9 @@
 CACHE MANIFEST
 # Manifest Version x.x.xxxx ahead yyyymmdd
-# Latest comment hash: <Fill when publish>
+# Commit HEAD: <Fill when publish>
 list.html
-ios7-like-theme.min.css
+ios7-theme-v0.2.min.css
 jquery.mobile.icons.min.css
-js/cookies.min.js
 js/json_ajax.js
 js/navito.js
 images/icons-png/action-black.png
@@ -108,10 +107,14 @@ images/icons-png/user-white.png
 images/icons-png/video-black.png
 images/icons-png/video-white.png
 images/ajax-loader.gif
-http://code.jquery.com/jquery-2.1.0.min.js
-http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css
-http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js
-http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.map
+jquery-2.1.0.min.js
+jquery.mobile.structure-1.4.2.min.css
+jquery.mobile-1.4.2.min.css
+jquery.mobile-1.4.2.min.js
+jquery.mobile-1.4.2.min.map
+firstconfig.html
+index.html
+LICENSE
 NETWORK:
 *
 http://218.93.33.59:85/map/wfmap/ibikeinterface.asp
