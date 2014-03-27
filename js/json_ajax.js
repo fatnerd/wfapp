@@ -83,6 +83,7 @@ function fillList(){
 }
 function fillListwPos(station){
         $('#mainload').text("正在呈现到列表上......");
+		document.getElementById("searchform").reset();
 		setTimeout(function(){
 			for (var i in station) {
 				var itemli = document.createElement("li");
