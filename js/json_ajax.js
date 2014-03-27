@@ -75,6 +75,7 @@ function refreshDetail(){
 
 function fillList(){
 	$('#mainload').text("从服务器上拉取数据......");
+	document.getElementById("searchform").reset();
 	$.getScript("http://218.93.33.59:85/map/wfmap/ibikeinterface.asp",function() {
 		if (sessionStorage.withGPS=="true"){
 			distFiller(sessionStorage.GPSlat, sessionStorage.GPSlng, ibike.station, fillListwPos);}
@@ -83,7 +84,6 @@ function fillList(){
 }
 function fillListwPos(station){
         $('#mainload').text("正在呈现到列表上......");
-		document.getElementById("searchform").reset();
 		setTimeout(function(){
 			for (var i in station) {
 				var itemli = document.createElement("li");
