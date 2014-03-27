@@ -20,7 +20,7 @@ function fillDetail(stationID) {
 	showload("detload"); 
 	detnow=stationID;
 	$.getScript("http://218.93.33.59:85/map/wfmap/ibikeinterface.asp?id=" + stationID,function() {
-	   if (sessionStorage.withGPS){
+	   if (sessionStorage.withGPS=="true"){
 		   	var mlat=sessionStorage.GPSlat;
 			var mlng=sessionStorage.GPSlng;
 			document.getElementById('detaildistance').innerHTML=GetDistance(mlat,mlng,isinglebike.station[0].lat,isinglebike.station[0].lng);
@@ -74,21 +74,21 @@ function refreshDetail(){
 }
 
 function fillList(){
-	$('#mainload').text("Pending data from remote server......");
-	document.getElementById('mainlist').innerHTML="";
-	//getLocation();
+	$('#mainload').text("从服务器上拉取数据......");
 	$.getScript("http://218.93.33.59:85/map/wfmap/ibikeinterface.asp",function() {
-		if (sessionStorage.withGPS){
+		if (sessionStorage.withGPS=="true"){
+			alert(true);
 			distFiller(sessionStorage.GPSlat, sessionStorage.GPSlng, ibike.station, fillListwPos);}
 		else{fillListwoPos();}
 	});
 }
 function fillListwPos(station){
-        $('#mainload').text("Parsing to list(15s), wait patient......");
+        $('#mainload').text("正在呈现到列表上......");
 		setTimeout(function(){
 			for (var i in station) {
-				var itemli = "<li></li>";
-				var itema = "<a href=\"#detail\"></a>";
+				var itemli = document.createElement("li");
+				var itema = document.createElement("a");
+				itema.setAttribute("href","#detail");
 				itema.id="stat"+(station[i].id-1);
 				itema.setAttribute("distance",station[i].distance);
 				itema.setAttribute("ontouchstart",("fillDetail("+station[i].id+");"));
@@ -101,18 +101,23 @@ function fillListwPos(station){
 }
 function fillListwoPos(){
 
-        $('#mainload').text("Parsing to list(15s), wait patient......");
+        $('#mainload').text("正在呈现到列表上......");
 		setTimeout(function(){
+			var all1 = document.createDocumentFragment();
 			for (var i in ibike.station) {
-				var itemli = "<li></li>";
-				var itema = "<a href=\"#detail\"></a>";
+				var itemli = document.createElement("li");
+				var itema = document.createElement("a");
+				itema.setAttribute("href","#detail");
 				itema.id="stat"+(ibike.station[i].id-1);
 				itema.setAttribute("ontouchstart",("fillDetail("+ibike.station[i].id+");"));
 				itema.setAttribute("arrayid", (ibike.station[i].id-1));
 				itema.innerHTML = ibike.station[i].id+". "+ibike.station[i].name+"&nbsp;&nbsp;&nbsp;&nbsp;"+"剩 "+ibike.station[i].availBike+" / "+(ibike.station[i].capacity-ibike.station[i].availBike)+" 空"
 				itemli.appendChild(itema);
-				document.getElementById('mainlist').appendChild(itemli);
-				$("#mainlist").listview("refresh");
-			}				hideload("mainload");
+				all1.appendChild(itemli);
+			}
+			document.getElementById('mainlist').innerHTML="";
+			document.getElementById('mainlist').appendChild(all1);
+			$("#mainlist").listview("refresh");
+			hideload("mainload");
 		}, 100);
 }
