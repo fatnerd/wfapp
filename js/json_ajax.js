@@ -85,6 +85,7 @@ function fillList(){
 function fillListwPos(station){
         $('#mainload').text("正在呈现到列表上......");
 		setTimeout(function(){
+			var all1 = document.createDocumentFragment();
 			for (var i in station) {
 				var itemli = document.createElement("li");
 				var itema = document.createElement("a");
@@ -95,9 +96,12 @@ function fillListwPos(station){
 				itema.setAttribute("arrayid", (station[i].id-1));
 				itema.innerHTML = station[i].id+". "+station[i].name+"&nbsp;&nbsp;&nbsp;&nbsp;"+"剩 "+station[i].availBike+" / "+(station[i].capacity-station[i].availBike)+" 空"
 				itemli.appendChild(itema);
-				document.getElementById('mainlist').appendChild(itemli);
-				$("#mainlist").listview("refresh");
-			}				hideload("mainload");},100);
+				all1.appendChild(itemli);
+			}		
+			document.getElementById('mainlist').innerHTML="";
+			document.getElementById('mainlist').appendChild(all1);
+			$("#mainlist").listview("refresh");
+					hideload("mainload");},5);
 }
 function fillListwoPos(){
 
@@ -119,5 +123,5 @@ function fillListwoPos(){
 			document.getElementById('mainlist').appendChild(all1);
 			$("#mainlist").listview("refresh");
 			hideload("mainload");
-		}, 100);
+		}, 5);
 }
