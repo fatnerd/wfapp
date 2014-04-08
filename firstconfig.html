@@ -9,11 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-<link rel="stylesheet" href="ios7-theme-v0.2.min.css" />
-<link rel="stylesheet" href="jquery.mobile.icons.min.css" />
-<link rel="stylesheet" href="jquery.mobile.structure-1.4.2.min.css" />
-<script src="jquery-2.1.0.min.js"></script>
-<script src="jquery.mobile-1.4.2.min.js"></script>
+<link rel="stylesheet" href="style.mix-1.4.2-v0.2.min.css" />
+<script src="jquery-with-mobile-2.1.0-1.4.2.min.js"></script>
 <style type="text/css">
 #page1 div .ui-body-a.ui-bar-a.ui-corner-all {
 	font-size: small;
@@ -26,7 +23,7 @@
 <body>
 <div data-role="page" id="page1">
   <div data-role="header" data-position="fixed">
-    <h1>首次设置 - 0</h1><a href="#page2" data-role="button" class="ui-btn-right" onclick="$.get('LICENSE',function(result){$('#eulacontainers').text(result);});">下一步 ></a>
+    <h1>首次设置 - 0</h1><a href="#page2" data-role="button" class="ui-btn-right" onclick="$.get('LICENSE.txt',function(result){$('#eulacontainers').text(result);});">下一步 ></a>
     </div>
   <div data-role="content">
   <div data-inset="true" class="ui-body-a ui-bar-a ui-corner-all">
@@ -71,7 +68,7 @@ function checkeula(){
   <div data-role="content">
     <ul data-role="listview" data-inset="true">
       <li><a href="#page4">新建一个配置文件</a></li>
-      <li><a href="#">使用已有的配置文件</a></li>
+      <li><a href="loadqr.html">使用已有的配置文件</a></li>
     </ul>
   </div>
 </div>
@@ -86,7 +83,7 @@ function checkeula(){
      
         <fieldset data-role="controlgroup" data-type="horizontal">
           <input type="radio" name="identify" id="identify_0" value="" />
-          普通用户
+          <label for="identify_0">普通用户</label>
           <input type="radio" name="identify" id="identify_1" value="" />
           <label for="identify_1">工作人员</label>
         </fieldset>
