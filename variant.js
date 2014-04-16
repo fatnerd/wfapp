@@ -2,9 +2,8 @@
 var loc_interface = "http://218.93.33.59:85/map/wfmap/ibikeinterface.asp" //ibikeinterface location
 function qroption(text,size){
 	return {
- 
 	// render method: `'canvas'`, `'image'` or `'div'`
-	render: 'canvas',
+	render: 'image',
 	// error correction level: `'L'`, `'M'`, `'Q'` or `'H'`
 	ecLevel: 'Q',
 	size: size,
@@ -19,10 +18,7 @@ function qroption(text,size){
 	// 3: image strip
 	// 4: image box
 	mode: 4,
- 
-	mSize: 0.1,
-	mPosX: 0.5,
-	mPosY: 0.5,
+ 	mSize: 0.1,
 	image: null ，
 	fill: '#008000',
 	background: null
