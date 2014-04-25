@@ -23,7 +23,7 @@
 <body>
 <div data-role="page" id="page1">
   <div data-role="header" data-position="fixed">
-    <h1>首次设置 - 0</h1><a href="#page2" data-role="button" class="ui-btn-right" onclick="$.get('LICENSE.txt',function(result){$('#eulacontainers').text(result);});">下一步 ></a>
+    <h1>首次设置 - 0</h1><a href="#page2" data-role="button" class="ui-btn-right">下一步 ></a>
     </div>
   <div data-role="content">
   <div data-inset="true" class="ui-body-a ui-bar-a ui-corner-all">
@@ -50,9 +50,7 @@ function checkeula(){
     <h1>最终用户使用协议</h1>
   <a href="#page3" data-role="button" id="eulanext" class="ui-btn-right" style="display:none;">同意</a>  </div>
   <div data-role="content">
-    <div class="ui-listview">
-    <textarea readonly id="eulacontainers" style="font-size:smaller;" contenteditable="false">loading</textarea>
-    </div>
+<a data-role="button" ontouchstart="window.open('LICENSE.txt');">打开GNU GPLv3 协议正文</a>
     <div data-role="fieldcontain" class="ui-mini">
 
         <input type="checkbox" name="accept" id="accept_0" class="custom" value="" onclick="checkeula();" />
@@ -76,15 +74,15 @@ function checkeula(){
 <div data-role="page" id="page4">
   <div data-role="header" data-position="fixed">
     <h1>首次设置 - 1</h1>
-  <a href="#" data-role="button" class="ui-btn-right">下一步 ></a>  </div>
+  <a href="#page5" data-role="button" class="ui-btn-right" id="next4">下一步 ></a>  </div><script>$('#next4').hide();</script>
   <div data-role="content">
     <center><h1 style="color:#00318C";>您的身份是</h1></center>
     <center>
      
-        <fieldset data-role="controlgroup" data-type="horizontal">
-          <input type="radio" name="identify" id="identify_0" value="" />
+        <fieldset data-role="controlgroup" data-type="horizontal" onClick="$('#next4').show();">
+          <input type="radio" name="identify" id="identify_0" value="" ontouchstart="localStorage['identify']='user';"/>
           <label for="identify_0">普通用户</label>
-          <input type="radio" name="identify" id="identify_1" value="" />
+          <input type="radio" name="identify" id="identify_1" value="" ontouchstart="localStorage['identify']='worker';"/>
           <label for="identify_1">工作人员</label>
         </fieldset>
 
@@ -95,6 +93,15 @@ function checkeula(){
         </div>
   </div>
 </div>
-
+<div data-role="page" id="page5">
+  <div data-role="header" data-position="fixed">
+    <h1>首次设置 - 2</h1>
+  <a href="#" data-role="button" class="ui-btn-right" id="next5">下一步 ></a>  </div><script>$('#next5').hide();</script>
+  <div data-role="content">
+   <ul data-role="listview" data-inset="true">
+   
+   </ul>
+  </div>
+</div>
 </body>
 </html>
