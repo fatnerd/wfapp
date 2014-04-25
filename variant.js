@@ -1,4 +1,4 @@
-//Data Variant Set For ibike668 System.
+//Data Variant Set For ibike668 Weifang System.
 var loc_interface = "http://218.93.33.59:85/map/wfmap/ibikeinterface.asp" //ibikeinterface location
 function qroption(text,size){
 	return {
@@ -19,7 +19,7 @@ function qroption(text,size){
 	// 4: image box
 	mode: 4,
  	mSize: 0.1,
-	image: null ，
+	image: null,
 	fill: '#008000',
 	background: null
 	};

@@ -34,13 +34,13 @@
 <script>
 function showload(a){document.getElementById(a).innerHTML="<center>载入中…………=v=</center>";}
 function hideload(a){document.getElementById(a).innerHTML="";}
-sessionStorage.withGPS=false;
+sessionStorage["withGPS"]=false;
 getLocation(function(position){
-	sessionStorage.withGPS=true;
+	sessionStorage["withGPS"]=true;
 	sessionStorage.GPSlat=position.coords.latitude;
 	sessionStorage.GPSlng=position.coords.longitude;
 	},function(){
-		sessionStorage.withGPS=false;
+		sessionStorage["withGPS"]=false;
 });
 </script>
 </head> 
@@ -124,7 +124,9 @@ getLocation(function(position){
 	</div>
 </div>
 </body>
-<script>$(document).ready(function(e) {
+<script type="text/javascript">
+$(document).ready(function(e) {
     fillList();
-});</script>
+});
+</script>
 </html>
