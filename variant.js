@@ -1,5 +1,8 @@
 //Data Variant Set For ibike668 Weifang System.
-var loc_interface = "http://218.93.33.59:85/map/wfmap/ibikeinterface.asp" //ibikeinterface location
+if (localStorage['loc_interfaceOverride']===undefined)
+{var loc_interface = "http://218.93.33.59:85/map/wfmap/ibikeinterface.asp";}
+else {loc_interface = localStorage['loc_interfaceOverride'];};
+ //ibikeinterface location
 function qroption(text,size){
 	return {
 	// render method: `'canvas'`, `'image'` or `'div'`
