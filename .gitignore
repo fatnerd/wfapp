@@ -213,3 +213,6 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+#Make sure manifest for produce use won't be updated
+*.manifest
