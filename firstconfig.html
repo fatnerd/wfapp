@@ -7,8 +7,6 @@
 <meta content="telephone=no" name="format-detection" />
 <meta content="email=no" name="format-detection" />
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <link rel="stylesheet" href="style.mix-1.4.2-v0.2.min.css" />
 <script src="jquery-with-mobile-2.1.0-1.4.2.min.js"></script>
 <style type="text/css">
@@ -17,7 +15,6 @@
 	font-weight: normal;
 }
 </style>
-
 </head>
 
 <body>
@@ -30,21 +27,27 @@
 <h2><center>欢迎来到本应用的设置页面</center></h2>
   <p style="font-size: medium;">　　首先非常感谢您使用本应用。</p>
   
-<p style="font-size: medium;">　　作者欢迎并鼓励大家依照自己的想法或创意来对本应用做改动（须遵守GPLv3协议）。本软件源代码存于Github网站wfjsw的wfibike_app源中，欢迎大家改进本代码并将您的成果与我们分享。</p><p style="font-size: medium;">　　让我们共同开启这一段旅程……</p>
+<p style="font-size: medium;">　　本应用版权没有，翻印不究，源码开放。适用范围不限定于潍坊市，凡是常州永安自行车公司计划内的城市都适用于本应用（前提要有折腾精神）。</p>
+<p style="font-size: medium;">　　让我们共同开启这一段旅程……</p>
   </div>
 </div>
 </div>
 </div>
 <div data-role="page" id="page2">
 <script>
-function checkeula(){
+console.time("Page Ready");
+$(document).ready(function(){
+$(":mobile-pagecontainer").on("pagecontainerbeforetransition",function(){console.time("Transition");}).on("pagecontainertransition",function(){console.timeEnd("Transition");});
+$("#accept_0").on("click touchstart",function(){
 	if ($("#accept_0").is(':checked')){
 		$("#eulanext").attr("style","");
 	} else {
 		$("#eulanext").attr("style","display:none;");
 	}
-}
+});
 		$("#eulanext").attr("style","display:none;");
+		console.timeEnd("Page Ready");});
+
 </script>
   <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#page1" data-role="button" data-inline="true" data-icon="back">返回</a>
     <h1>最终用户使用协议</h1>
@@ -53,7 +56,7 @@ function checkeula(){
 <a data-role="button" ontouchstart="window.open('LICENSE.txt');">打开GNU GPLv3 协议正文</a>
     <div data-role="fieldcontain" class="ui-mini">
 
-        <input type="checkbox" name="accept" id="accept_0" class="custom" value="" onclick="checkeula();" />
+        <input type="checkbox" name="accept" id="accept_0" class="custom" value="" />
         <label for="accept_0">我同意GNU GPLv3软件使用共享协议<br>I Accept the GNU GPLv3 License</label>
     </div>
     

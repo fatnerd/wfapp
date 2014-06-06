@@ -89,13 +89,12 @@ function fillListwPos(station){
 			for (var i in station) {
 				var itemli = document.createElement("li");
 				var itema = document.createElement("a");
-				itema.setAttribute("href","#detail");
-				itema.id="stat"+(station[i].id-1);
-				itema.setAttribute("distance",station[i].distance);
-				itema.setAttribute("ontouchstart",("fillDetail("+station[i].id+");"));
-				itema.setAttribute("arrayid", (station[i].id-1));
 				itema.innerHTML = station[i].id+". "+station[i].name+"&nbsp;&nbsp;&nbsp;&nbsp;"+"剩 "+station[i].availBike+" / "+(station[i].capacity-station[i].availBike)+" 空"
+				var itema2 = document.createElement("a");
+				itema2.setAttribute("class","splbutton");
+				itema2.setAttribute("arrayid", (ibike.station[i].id-1));
 				itemli.appendChild(itema);
+				itemli.appendChild(itema2);
 				all1.appendChild(itemli);
 			}		
 			document.getElementById('mainlist').innerHTML="";
@@ -111,12 +110,12 @@ function fillListwoPos(){
 			for (var i in ibike.station) {
 				var itemli = document.createElement("li");
 				var itema = document.createElement("a");
-				itema.setAttribute("href","#detail");
-				itema.id="stat"+(ibike.station[i].id-1);
-				itema.setAttribute("ontouchstart",("fillDetail("+ibike.station[i].id+");"));
-				itema.setAttribute("arrayid", (ibike.station[i].id-1));
 				itema.innerHTML = ibike.station[i].id+". "+ibike.station[i].name+"&nbsp;&nbsp;&nbsp;&nbsp;"+"剩 "+ibike.station[i].availBike+" / "+(ibike.station[i].capacity-ibike.station[i].availBike)+" 空"
+				var itema2 = document.createElement("a");
+				itema2.setAttribute("class","splbutton");
+				itema2.setAttribute("arrayid", (ibike.station[i].id-1));
 				itemli.appendChild(itema);
+				itemli.appendChild(itema2);
 				all1.appendChild(itemli);
 			}
 			document.getElementById('mainlist').innerHTML="";
