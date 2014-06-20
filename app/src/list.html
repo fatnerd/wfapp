@@ -34,13 +34,13 @@
 function showload(a){document.getElementById(a).innerHTML="<center>载入中…………=v=</center>";}
 function hideload(a){document.getElementById(a).innerHTML="";}
 sessionStorage["withGPS"]=false;
-getLocation(function(position){
+/*getLocation(function(position){
 	sessionStorage["withGPS"]=true;
 	sessionStorage.GPSlat=position.coords.latitude;
 	sessionStorage.GPSlng=position.coords.longitude;
 	},function(){
 		sessionStorage["withGPS"]=false;
-});
+});*/
 </script>
 </head> 
 <body style="overflow:hidden"> 
@@ -110,13 +110,13 @@ getLocation(function(position){
 <script type="text/javascript">
 var loc_interface = "http://218.93.33.59:85/map/wfmap/ibikeinterface.asp"
 $(document).ready(function(e) {
-    fillList();
 	$("#mainlist").delegate("a.splbutton","click",function(){
 		fillDetail(($(this).attr("arrayid")));
   		$("body").pagecontainer("change","#detail");
 	});
 	$("#reflst").on("touchstart",function(){fillList()});
 	var scrollmain = new IScroll('#wrappermain',{mouseWheel: false,scrollbars: false});
+	fillList();
 });
 </script>
 </html>
