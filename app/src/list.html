@@ -1,0 +1,122 @@
+﻿<!--
+    WFiBike_app: Weifang Public Bicycle HTML5(Cross-Platform) App
+    Copyright (C) 2014  js,w
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    Contact: l.lllkj@163.com  with a header contains "[pj_WFiBike_APP]"
+-->
+<!DOCTYPE html> 
+<html manifest="wfibike.app.manifest">
+<head>
+<meta charset="utf-8">
+<title>潍坊公共自行车</title>
+<script src="variant.js" type="text/javascript"></script>
+<link rel="apple-touch-icon-precomposed" href="images/bike.png" />
+<meta content="telephone=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="style.mix-1.4.2-v0.2.min.css" />
+<script src="jquery/jquery-with-mobile-2.1.0-1.4.2.min.js"></script>
+<script src="iscroll/iscroll-infinite.min.js" type="text/javascript"></script>
+<script src="js/toolbox.min.js" type="text/javascript"></script>
+<script src="js/debug.js" type="text/javascript" defer async></script>
+<script>
+function showload(a){document.getElementById(a).innerHTML="<center>载入中…………=v=</center>";}
+function hideload(a){document.getElementById(a).innerHTML="";}
+sessionStorage["withGPS"]=false;
+getLocation(function(position){
+	sessionStorage["withGPS"]=true;
+	sessionStorage.GPSlat=position.coords.latitude;
+	sessionStorage.GPSlng=position.coords.longitude;
+	},function(){
+		sessionStorage["withGPS"]=false;
+});
+</script>
+</head> 
+<body style="overflow:hidden"> 
+
+<div data-role="page" id="mainpage" data-content-theme="a">
+	<div data-role="header" data-position="fixed" data-tap-toggle="false" ><a href="#more" data-role="button" data-icon="gear">更多</a><a href="#" data-role="button" data-icon="refresh" data-iconpos="notext" class="ui-btn-right" id="reflst">刷新</a>
+	<h1 style="font-weight:bold;">站点列表</h1>
+    </div>
+<div data-role="controlgroup" data-position="fixed">
+	<form class="ui-filterable ui-mini" data-inset="false" data-position="fixed" id="searchform">
+    	<input id="filterinput" class="ui-mini"  data-type="search" placeholder="在这里搜索（精确）">
+	</form>
+    <center><div id="mainload">轻触刷新键来初始化主列表(141KB)</div></center></div>
+    	<div data-role="content">
+        <div id="wrappermain" style="position:relative;">
+		<ul data-role="listview" id="mainlist" data-filter="true" data-input="#filterinput">
+			
+		</ul></div>		
+	</div>
+</div>
+
+<div data-role="page" id="more" data-content-theme="a" data-transition="slide">
+	<div data-role="header" data-position="fixed" data-tap-toggle="false" ><a href="#" data-role="button" onclick="history.go(-1);" data-icon="back" data-iconpos="notext">返回</a>
+		<h1>更多功能</h1>
+	</div>
+	<div data-role="content" data-inset="true" >
+      <ul data-role="listview" data-inset="true">
+        <li><a href="#">麻点地图</a></li>
+        <li><a href="#">手动查询</a></li>
+        <li><a href="#">设置</a></li>
+        <li><a href="#">关于</a></li>
+      </ul>
+    </div>
+	<div data-role="footer" data-position="fixed" data-tap-toggle="false" >
+		<h4>Powered by jQuery Mobile</h4>
+	</div>
+</div>
+
+<div data-role="page" id="detail" >
+	<div data-role="header"  data-position="fixed" data-tap-toggle="false" ><a href="#" data-role="button" onclick="history.go(-1);" data-icon="back" data-iconpos="notext">返回</a><a data-role="button" onclick="refreshDetail();" data-icon="refresh" data-iconpos="notext">刷新</a>
+		<h1>站点详情</h1>
+	</div>
+	<div data-role="content">
+    <center><span id="detload"></span></center>
+    <center><img src="" width=270 height=216 class="ui-corner-all ui-bar-a" id="detailstatmap"></center>
+	  <ul data-role="listview" data-inset="true">
+        <li><span style="font-weight:bold;">站点ID</span><span class="ui-content" id="detailid">1</span></li>
+	    <li><span style="font-weight:bold;">站点名称</span><span class="ui-content" id="detailname">安顺东区站</span></li>
+	      <div data-role="collapsible">
+	        <h3>详细地址</h3>
+	        <p id="detailadd">东风街安顺东区大门东侧</p>
+        </div>
+        <li><span style="font-weight:bold;">站点规模</span><span class="ui-content"><span id="detailcapacity">54</span> 辆</span></li>
+        <li><span style="font-weight:bold;">距离</span><span class="ui-content" id="detaildistance">500</span> 米</li>
+      </ul>
+        <ul id="detailnumlist" data-role="listview" data-inset="true">
+	    <li id="detailli1" data-theme="f"><span style="font-weight:bold;">存车数</span><span class="ui-li-count" id="detailavail">1</span></li>
+	    <li id="detailli2" data-theme="d"><span style="font-weight:bold;">空位数</span><span class="ui-li-count" id="detailleft">53</span></li>
+      </ul>
+      <input type="hidden" id="detaillat" />
+      <input type="hidden" id="detaillng" />
+      <div data-role="controlgroup" data-type="horizontal" align="center"><button onclick="Navitodetail();">导航至此站点</button></div>
+
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+var loc_interface = "http://218.93.33.59:85/map/wfmap/ibikeinterface.asp"
+$(document).ready(function(e) {
+    fillList();
+	$("#mainlist").delegate("a.splbutton","click",function(){
+		fillDetail(($(this).attr("arrayid")));
+  		$("body").pagecontainer("change","#detail");
+	});
+	$("#reflst").on("touchstart",function(){fillList()});
+	var scrollmain = new IScroll('#wrappermain',{mouseWheel: false,scrollbars: false});
+});
+</script>
+</html>

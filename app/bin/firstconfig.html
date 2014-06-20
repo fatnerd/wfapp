@@ -1,0 +1,110 @@
+﻿<!doctype html>
+<html manifest="wfibike.app.manifest">
+<head>
+<meta charset="utf-8">
+<title>潍坊公共自行车</title>
+<link rel="apple-touch-icon" href="images/bike.png" />
+<meta content="telephone=no" name="format-detection" />
+<meta content="email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="style.mix-1.4.2-v0.2.min.css" />
+<script src="jquery/jquery-with-mobile-2.1.0-1.4.2.min.js"></script>
+<style type="text/css">
+#page1 div .ui-body-a.ui-bar-a.ui-corner-all {
+	font-size: small;
+	font-weight: normal;
+}
+</style>
+</head>
+
+<body>
+<div data-role="page" id="page1">
+  <div data-role="header" data-position="fixed">
+    <h1>首次设置 - 0</h1><a href="#page2" data-role="button" class="ui-btn-right">下一步 ></a>
+    </div>
+  <div data-role="content">
+  <div data-inset="true" class="ui-body-a ui-bar-a ui-corner-all">
+<h2><center>欢迎来到本应用的设置页面</center></h2>
+  <p style="font-size: medium;">　　首先非常感谢您使用本应用。</p>
+  
+<p style="font-size: medium;">　　本应用版权没有，翻印不究，源码开放。适用范围不限定于潍坊市，凡是常州永安自行车公司计划内的城市都适用于本应用（前提要有折腾精神）。</p>
+<p style="font-size: medium;">　　让我们共同开启这一段旅程……</p>
+  </div>
+</div>
+</div>
+</div>
+<div data-role="page" id="page2">
+<script>
+console.time("Page Ready");
+$(document).ready(function(){
+$(":mobile-pagecontainer").on("pagecontainerbeforetransition",function(){console.time("Transition");}).on("pagecontainertransition",function(){console.timeEnd("Transition");});
+$("#accept_0").on("click touchstart",function(){
+	if ($("#accept_0").is(':checked')){
+		$("#eulanext").attr("style","");
+	} else {
+		$("#eulanext").attr("style","display:none;");
+	}
+});
+		$("#eulanext").attr("style","display:none;");
+		console.timeEnd("Page Ready");});
+
+</script>
+  <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#page1" data-role="button" data-inline="true" data-icon="back">返回</a>
+    <h1>最终用户使用协议</h1>
+  <a href="#page3" data-role="button" id="eulanext" class="ui-btn-right" style="display:none;">同意</a>  </div>
+  <div data-role="content">
+<a data-role="button" ontouchstart="window.open('LICENSE.txt');">打开GNU GPLv3 协议正文</a>
+    <div data-role="fieldcontain" class="ui-mini">
+
+        <input type="checkbox" name="accept" id="accept_0" class="custom" value="" />
+        <label for="accept_0">我同意GNU GPLv3软件使用共享协议<br>I Accept the GNU GPLv3 License</label>
+    </div>
+    
+  </div>
+</div>
+<div data-role="page" id="page3">
+  <div data-role="header">
+    <h1>请选择一项</h1>
+  </div>
+  <div data-role="content">
+    <ul data-role="listview" data-inset="true">
+      <li><a href="#page4">新建一个配置文件</a></li>
+      <li><a href="loadqr.html">使用已有的配置文件</a></li>
+    </ul>
+  </div>
+</div>
+
+<div data-role="page" id="page4">
+  <div data-role="header" data-position="fixed">
+    <h1>首次设置 - 1</h1>
+  <a href="#page5" data-role="button" class="ui-btn-right" id="next4">下一步 ></a>  </div><script>$('#next4').hide();</script>
+  <div data-role="content">
+    <center><h1 style="color:#00318C";>您的身份是</h1></center>
+    <center>
+     
+        <fieldset data-role="controlgroup" data-type="horizontal" onClick="$('#next4').show();">
+          <input type="radio" name="identify" id="identify_0" value="" ontouchstart="localStorage['identify']='user';"/>
+          <label for="identify_0">普通用户</label>
+          <input type="radio" name="identify" id="identify_1" value="" ontouchstart="localStorage['identify']='worker';"/>
+          <label for="identify_1">工作人员</label>
+        </fieldset>
+
+    </center><br />
+        <div style="font-size:smaller;">
+            <li>普通用户：使用标准2档配色方案，更加直观明确。</li>
+        	<li>工作人员：使用调度员专用配色方案，突出显示需要车辆调度的站点。</li>
+        </div>
+  </div>
+</div>
+<div data-role="page" id="page5">
+  <div data-role="header" data-position="fixed">
+    <h1>首次设置 - 2</h1>
+  <a href="#" data-role="button" class="ui-btn-right" id="next5">下一步 ></a>  </div><script>$('#next5').hide();</script>
+  <div data-role="content">
+   <ul data-role="listview" data-inset="true">
+   
+   </ul>
+  </div>
+</div>
+</body>
+</html>
