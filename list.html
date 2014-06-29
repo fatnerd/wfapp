@@ -21,13 +21,14 @@
 <head>
 <meta charset="utf-8">
 <title>潍坊公共自行车</title>
+<script>var loc_interface = "http://218.93.33.59:85/map/wfmap/ibikeinterface.asp";</script>
 <script src="variant.js" type="text/javascript"></script>
-<link rel="apple-touch-icon-precomposed" href="images/bike.png" />
+<link rel="apple-touch-icon" href="images/bike.png" />
 <meta content="telephone=no" name="format-detection" />
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet" href="style.mix-1.4.2-v0.2.min.css" />
 <script src="jquery/jquery-with-mobile-2.1.0-1.4.2.min.js"></script>
-<script src="iscroll/iscroll-infinite.min.js" type="text/javascript"></script>
+<script src="iscroll/iscroll-infinite.js" type="text/javascript"></script>
 <script src="js/toolbox.min.js" type="text/javascript"></script>
 <script src="js/debug.js" type="text/javascript" defer async></script>
 <script>
@@ -108,7 +109,6 @@ sessionStorage["withGPS"]=false;
 </div>
 </body>
 <script type="text/javascript">
-var loc_interface = "http://218.93.33.59:85/map/wfmap/ibikeinterface.asp"
 $(document).ready(function(e) {
 	$("#mainlist").delegate("a.splbutton","click",function(){
 		fillDetail(($(this).attr("arrayid")));
