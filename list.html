@@ -26,8 +26,10 @@
 <link rel="apple-touch-icon" href="images/bike.png" />
 <meta content="telephone=no" name="format-detection" />
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="style.mix-1.4.2-v0.2.min.css" />
-<script src="jquery/jquery-with-mobile-2.1.0-1.4.2.min.js"></script>
+<link href="jquery.mobile.custom.structure-1.4.3.css" rel="stylesheet" type="text/css" />
+<link href="ios7-theme-v0.2.min.css" rel="stylesheet" type="text/css" />
+<script src="jquery/jquery-2.1.1.js" type="text/javascript"></script>
+<script src="jquery/jquery.mobile.custom-1.4.3.js" type="text/javascript"></script>
 <script src="iscroll/iscroll-infinite.js" type="text/javascript"></script>
 <script src="js/toolbox.min.js" type="text/javascript"></script>
 <script src="js/debug.js" type="text/javascript" defer async></script>
@@ -110,13 +112,13 @@ sessionStorage["withGPS"]=false;
 </body>
 <script type="text/javascript">
 $(document).ready(function(e) {
-	$("#mainlist").delegate("a.splbutton","click",function(){
+	$("#mainlist").delegate("a .splbutton","click",function(){
 		fillDetail(($(this).attr("arrayid")));
   		$("body").pagecontainer("change","#detail");
 	});
 	$("#reflst").on("touchstart",function(){fillList()});
 	var scrollmain = new IScroll('#wrappermain',{mouseWheel: false,scrollbars: false});
-	fillList();
+	//fillList();
 });
 </script>
 </html>
