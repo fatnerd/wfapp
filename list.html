@@ -39,16 +39,8 @@ sessionStorage["withGPS"]=false;
 	<div data-role="header" data-position="fixed" data-tap-toggle="false" ><a href="#more" data-role="button" data-icon="gear">更多</a><a href="#" data-role="button" data-icon="refresh" data-iconpos="notext" class="ui-btn-right" id="reflst">刷新</a>
 	<h1 style="font-weight:bold;">站点列表</h1>
     </div>
-<div data-role="controlgroup" data-position="fixed">
-	<form class="ui-filterable ui-mini" data-inset="false" data-position="fixed" id="searchform">
-    	<input id="filterinput" class="ui-mini"  data-type="search" placeholder="在这里搜索（精确）">
-	</form>
-    <center><div id="mainload">轻触刷新键来初始化主列表(141KB)</div></center></div>
-    	<div data-role="content">
-        <div id="wrappermain" style="position:relative;">
-		<ul data-role="listview" id="mainlist" data-filter="true" data-input="#filterinput">
-			
-		</ul></div>		
+<div data-role="content">
+		
 	</div>
 </div>
 
@@ -109,7 +101,6 @@ $(document).ready(function(e) {
   		$("body").pagecontainer("change","#detail");
 	});
 	$("#reflst").on("touchstart",function(){fillList()});
-	var scrollmain = new IScroll('#wrappermain',{mouseWheel: false,preventDefault: false});
 	//fillList();
 });
 </script>
