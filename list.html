@@ -21,48 +21,64 @@
 <head>
 <meta charset="utf-8">
 <title>潍坊公共自行车</title>
-<script>
+<script type="text/javascript">
 function showload(a){document.getElementById(a).innerHTML="<center>载入中…………=v=</center>";}
 function hideload(a){document.getElementById(a).innerHTML="";}
 sessionStorage["withGPS"]=false;
+var loadtime=Date.now();
 </script>
 <link rel="apple-touch-icon" href="images/bike.png" />
-<meta content="telephone=no" name="format-detection" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-<link href="jquery.mobile.custom.structure-1.4.3.css" rel="stylesheet" type="text/css" />
-<link href="ios7-theme-v0.2.min.css" rel="stylesheet" type="text/css" />
+<link href="jquery.mobile.structure-1.4.3.min.css" rel="stylesheet" type="text/css" />
+<link href="ios7-theme-v0.3.css" rel="stylesheet" type="text/css" />
 <script src="variant.js" type="text/javascript"></script>
 </head> 
-<body style="overflow:hidden"> 
+<body>
+<div data-role="page" id="mainpage" data-theme="a">
+	<div data-role="header" data-tap-toggle="false" data-position="fixed"><a href="#more" data-role="button">＋ 更多</a>
+	<h1 style="font-weight:bold;">即时状态</h1>
+    </div><p></p>
+<center><div id="timerhead">缓存剩余有效时间</div>
+<div id="cachetimer">00:00</div>
+<a id="refnow" data-role="button" data-inset="false">立即刷新站点缓存</a>
+<div data-role="controlgroup"><a href="#" data-role="button">打开地图</a><a href="#" data-role="button">打开收藏夹</a></div> 
+</center>
+<ul data-role="listview">
+  <li>上次缓存时间
+    <p class="ui-li-aside" id="lastload"></p>
+  </li>
+  <li>更新状态
+    <p class="ui-li-aside" id="loadstats"></p>
+  </li>
+  <li>当前城市
+    <p class="ui-li-aside" id="currcity"></p>
+  </li>
+  <li>车站总数
+    <p class="ui-li-aside" id="totalcap"></p>
+  </li>
+  <li>车桩总数
+    <p class="ui-li-aside" id="totalavil"></p>
+  </li>
+</ul>
 
-<div data-role="page" id="mainpage" data-content-theme="a">
-	<div data-role="header" data-position="fixed" data-tap-toggle="false" ><a href="#more" data-role="button" data-icon="gear">更多</a><a href="#" data-role="button" data-icon="refresh" data-iconpos="notext" class="ui-btn-right" id="reflst">刷新</a>
-	<h1 style="font-weight:bold;">站点列表</h1>
-    </div>
-<div data-role="content">
-		
-	</div>
 </div>
 
-<div data-role="page" id="more" data-content-theme="a" data-transition="slide">
-	<div data-role="header" data-position="fixed" data-tap-toggle="false" ><a href="#" data-role="button" onclick="history.go(-1);" data-icon="back" data-iconpos="notext">返回</a>
+<div data-role="page" id="more" data-theme="a" data-transition="slide">
+	<div data-role="header" data-position="fixed" data-tap-toggle="false" ><a href="#" data-role="button" onclick="history.go(-1);">＜ 返回</a>
 		<h1>更多功能</h1>
-	</div>
-	<div data-role="content" data-inset="true" >
-      <ul data-role="listview" data-inset="true">
-        <li><a href="#">麻点地图</a></li>
-        <li><a href="#">手动查询</a></li>
+	</div><br>
+      <ul data-role="listview">
+        <li><a href="#">意见反馈（开发者）</a></li>
+        <li><a href="#">热线电话查询</a></li>
+        <li><a href="#">更新日志</a></li>
         <li><a href="#">设置</a></li>
         <li><a href="#">关于</a></li>
       </ul>
-    </div>
-	<div data-role="footer" data-position="fixed" data-tap-toggle="false" >
-		<h4>Powered by jQuery Mobile</h4>
-	</div>
 </div>
 
 <div data-role="page" id="detail" >
-	<div data-role="header"  data-position="fixed" data-tap-toggle="false" ><a href="#" data-role="button" onclick="history.go(-1);" data-icon="back" data-iconpos="notext">返回</a><a data-role="button" onclick="refreshDetail();" data-icon="refresh" data-iconpos="notext">刷新</a>
+	<div data-role="header"  data-position="fixed" data-tap-toggle="false" ><a href="#" data-role="button" onclick="history.go(-1);">＜ 返回</a><a data-role="button" onclick="refreshDetail();" data-icon="refresh" data-iconpos="notext">刷新</a>
 		<h1>站点详情</h1>
 	</div>
 	<div data-role="content">
@@ -90,18 +106,20 @@ sessionStorage["withGPS"]=false;
 </div>
 </body>
 <script src="jquery/jquery-2.1.1.js" type="text/javascript"></script>
-<script src="jquery/jquery.mobile.custom-1.4.3.js" type="text/javascript"></script>
+<script src="jquery/jquery.mobile-1.4.3.js" type="text/javascript"></script>
 <script src="iscroll/iscroll-infinite.js" type="text/javascript"></script>
 <script src="js/toolbox.min.js" type="text/javascript"></script>
+<script src="js/cachectrl.js" type="text/javascript"></script>
 <script src="js/debug.js" type="text/javascript" defer async></script>
 <script type="text/javascript">
 $(document).ready(function(e) {
-	$("#mainlist").delegate("a .splbutton","click",function(){
-		fillDetail(($(this).attr("arrayid")));
-  		$("body").pagecontainer("change","#detail");
-	});
-	$("#reflst").on("touchstart",function(){fillList()});
-	//fillList();
+	$("#refnow").on("click",function(){
+		cacheCtrl.timerEnd();
+		cacheCtrl.updateCache();});	
+	if (localStorage["autoUpdateCache"]) {
+		cacheCtrl.updateCache();
+	}
+	loadtime=Date.now()-loadtime;
 });
 </script>
 </html>

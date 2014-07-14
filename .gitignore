@@ -216,3 +216,4 @@ pip-log.txt
 
 #Make sure manifest for produce use won't be updated
 *.manifest
+NetBox2.exe

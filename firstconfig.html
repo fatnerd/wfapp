@@ -7,8 +7,10 @@
 <meta content="telephone=no" name="format-detection" />
 <meta content="email=no" name="format-detection" />
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="style.mix-1.4.2-v0.2.min.css" />
-<script src="jquery/jquery-with-mobile-2.1.0-1.4.2.min.js"></script>
+<link rel="stylesheet" href="ios7-theme-v0.3.css" />
+<link rel="stylesheet" href="jquery.mobile.custom.structure-1.4.3.min.css" />
+<script src="jquery/jquery-2.1.1.js"></script>
+<script src="jquery/jquery.mobile.custom-1.4.3.js"></script>
 <style type="text/css">
 #page1 div .ui-body-a.ui-bar-a.ui-corner-all {
 	font-size: small;
@@ -20,15 +22,15 @@
 <body>
 <div data-role="page" id="page1">
   <div data-role="header" data-position="fixed">
-    <h1>首次设置 - 0</h1><a href="#page2" data-role="button" class="ui-btn-right">下一步 ></a>
+    <h1>首次设置 - 0</h1><a href="#page2" data-role="button" class="ui-btn-right">下一步 〉</a>
     </div>
   <div data-role="content">
   <div data-inset="true" class="ui-body-a ui-bar-a ui-corner-all">
 <h2><center>欢迎来到本应用的设置页面</center></h2>
   <p style="font-size: medium;">　　首先非常感谢您使用本应用。</p>
   
-<p style="font-size: medium;">　　本应用版权没有，翻印不究，源码开放。适用范围不限定于潍坊市，凡是常州永安自行车公司计划内的城市都适用于本应用（前提要有折腾精神）。</p>
-<p style="font-size: medium;">　　让我们共同开启这一段旅程……</p>
+<p style="font-size: medium;">　　本应用版权没有，翻印不究，源码开放。适用范围不限定于潍坊市，凡是常州永安自行车公司计划内的城市都适用于本应用。</p>
+<p style="font-size: medium;">　　Press Next to continue</p>
   </div>
 </div>
 </div>
@@ -49,9 +51,9 @@ $("#accept_0").on("click touchstart",function(){
 		console.timeEnd("Page Ready");});
 
 </script>
-  <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#page1" data-role="button" data-inline="true" data-icon="back">返回</a>
+  <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#page1" data-role="button" >〈 返回</a>
     <h1>最终用户使用协议</h1>
-  <a href="#page3" data-role="button" id="eulanext" class="ui-btn-right" style="display:none;">同意</a>  </div>
+  <a href="#page3" data-role="button" id="eulanext" class="ui-btn-right" style="display:none;">同意 〉</a>  </div>
   <div data-role="content">
 <a data-role="button" ontouchstart="window.open('LICENSE.txt');">打开GNU GPLv3 协议正文</a>
     <div data-role="fieldcontain" class="ui-mini">
@@ -64,13 +66,31 @@ $("#accept_0").on("click touchstart",function(){
 </div>
 <div data-role="page" id="page3">
   <div data-role="header">
-    <h1>请选择一项</h1>
-  </div>
+    <h1>网络环境</h1>
+  <a href="#page4" data-role="button" class="ui-btn-right">下一步 〉</a>  </div>
   <div data-role="content">
-    <ul data-role="listview" data-inset="true">
-      <li><a href="#page4">新建一个配置文件</a></li>
-      <li><a href="loadqr.html">使用已有的配置文件</a></li>
-    </ul>
+  <div>为了更好地为您提供服务，请在下面选择您当前的网络环境</div>
+    <div data-role="fieldcontain">
+      <label for="isp" class="select">运营商:</label>
+      <select name="isp" id="isp">
+        <option value="0" selected>未知</option>
+        <option value="1">中国移动</option>
+        <option value="2">中国联通</option>
+        <option value="3">中国电信</option>
+        <option value="4">虚拟运营商</option>
+        <option value="5">其他</option>
+      </select>
+    </div>
+    <div data-role="fieldcontain">
+      <label for="medium" class="select">连接方式:</label>
+      <select name="medium" id="medium">
+        <option value="wifi">WiFi</option>
+        <option value="2g">2G</option>
+        <option value="3g">3G</option>
+        <option value="4g">4G</option>
+      </select>
+    </div>
+    
   </div>
 </div>
 
@@ -79,21 +99,30 @@ $("#accept_0").on("click touchstart",function(){
     <h1>首次设置 - 1</h1>
   <a href="#page5" data-role="button" class="ui-btn-right" id="next4">下一步 ></a>  </div><script>$('#next4').hide();</script>
   <div data-role="content">
-    <center><h1 style="color:#00318C";>您的身份是</h1></center>
-    <center>
-     
-        <fieldset data-role="controlgroup" data-type="horizontal" onClick="$('#next4').show();">
-          <input type="radio" name="identify" id="identify_0" value="" ontouchstart="localStorage['identify']='user';"/>
-          <label for="identify_0">普通用户</label>
-          <input type="radio" name="identify" id="identify_1" value="" ontouchstart="localStorage['identify']='worker';"/>
-          <label for="identify_1">工作人员</label>
-        </fieldset>
-
-    </center><br />
-        <div style="font-size:smaller;">
-            <li>普通用户：使用标准2档配色方案，更加直观明确。</li>
-        	<li>工作人员：使用调度员专用配色方案，突出显示需要车辆调度的站点。</li>
-        </div>
+      <div data-role="fieldcontain">
+        <label for="mapvendor" class="select">请选择您常用的导航软件:</label>
+        <select name="mapvendor" id="mapvendor">
+          <option value="none">无</option>
+          <option value="bmap">百度地图</option>
+          <option value="amap">高德地图</option>
+        </select>
+      </div>
+      <div data-role="fieldcontain">
+        <label for="selectmenu" class="select">选择城市:</label>
+        <select name="selectmenu" id="selectmenu">
+          <option value="option1">选项 1</option>
+          <option value="option2">选项 2</option>
+          <option value="option3">选项 3</option>
+        </select>
+      </div>
+      <div data-role="fieldcontain">
+        <label for="flipswitch">自动刷新站点缓存:</label>
+        <select name="flipswitch" id="flipswitch" data-role="slider">
+          <option value="off">关</option>
+          <option value="on" selected>开</option>
+        </select>
+      </div>
+      
   </div>
 </div>
 <div data-role="page" id="page5">

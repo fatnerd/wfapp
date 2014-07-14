@@ -2552,4 +2552,10 @@ ol.ui-listview > li img:first-child + * ~ * {
 	text-align: left;
 	margin-bottom: 1.4em;
 	opacity: .5;
+}.gridtext2 {
+	font-size: medium;
+	font-weight: lighter;
+	color: #797979;
+	margin-top: 5%;
+	margin-bottom: 5%;
 }
