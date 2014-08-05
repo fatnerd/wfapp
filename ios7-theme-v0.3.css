@@ -1138,3 +1138,12 @@ ul li {
     -webkit-user-select:none;
 	cursor:default;
 }
+#l-map {
+	position:fixed !important;
+	height: 100%;
+	width: 100%;
+	-webkit-user-select:none;
+}
+#map .ui-header{
+    margin-bottom: 0mm;
+}
