@@ -7,10 +7,9 @@
 <meta content="telephone=no" name="format-detection" />
 <meta content="email=no" name="format-detection" />
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="jquery.mobile.structure-1.4.3.min.css" />
+<link rel="stylesheet" href="jquery.mobile.inline-svg-1.4.3.min.css">
 <link rel="stylesheet" href="ios7-theme-v0.3.css" />
-<link rel="stylesheet" href="jquery.mobile.custom.structure-1.4.3.min.css" />
-<script src="jquery/jquery-2.1.1.js"></script>
-<script src="jquery/jquery.mobile.custom-1.4.3.js"></script>
 <style type="text/css">
 #page1 div .ui-body-a.ui-bar-a.ui-corner-all {
 	font-size: small;
@@ -30,6 +29,16 @@
   <p style="font-size: medium;">　　首先非常感谢您使用本应用。</p>
   
 <p style="font-size: medium;">　　本应用版权没有，翻印不究，源码开放。适用范围不限定于潍坊市，凡是常州永安自行车公司计划内的城市都适用于本应用。</p>
+<p style="font-size: medium;">    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.</p>
+<p style="font-size: medium;">
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+</p>
 <p style="font-size: medium;">　　Press Next to continue</p>
   </div>
 </div>
@@ -38,18 +47,6 @@
 <div data-role="page" id="page2">
 <script>
 console.time("Page Ready");
-$(document).ready(function(){
-$(":mobile-pagecontainer").on("pagecontainerbeforetransition",function(){console.time("Transition");}).on("pagecontainertransition",function(){console.timeEnd("Transition");});
-$("#accept_0").on("click touchstart",function(){
-	if ($("#accept_0").is(':checked')){
-		$("#eulanext").attr("style","");
-	} else {
-		$("#eulanext").attr("style","display:none;");
-	}
-});
-		$("#eulanext").attr("style","display:none;");
-		console.timeEnd("Page Ready");});
-
 </script>
   <div data-role="header" data-position="fixed" data-tap-toggle="false"><a href="#page1" data-role="button" >〈 返回</a>
     <h1>最终用户使用协议</h1>
@@ -95,9 +92,9 @@ $("#accept_0").on("click touchstart",function(){
 </div>
 
 <div data-role="page" id="page4">
-  <div data-role="header" data-position="fixed">
-    <h1>首次设置 - 1</h1>
-  <a href="#page5" data-role="button" class="ui-btn-right" id="next4">下一步 ></a>  </div><script>$('#next4').hide();</script>
+  <div data-role="header" data-position="fixed" data-tap-toggle="false">
+    <h1>首次设置</h1>
+  <a href="#page5" data-role="button" class="ui-btn-right" id="next4">完成</a>  </div>
   <div data-role="content">
       <div data-role="fieldcontain">
         <label for="mapvendor" class="select">请选择您常用的导航软件:</label>
@@ -108,32 +105,97 @@ $("#accept_0").on("click touchstart",function(){
         </select>
       </div>
       <div data-role="fieldcontain">
-        <label for="selectmenu" class="select">选择城市:</label>
-        <select name="selectmenu" id="selectmenu">
-          <option value="option1">选项 1</option>
+        <label for="city" class="select">选择城市:</label>
+        <select name="city" id="city" onChange="$('#next4').show();">
+          <option value="nothing">选择城市</option>
           <option value="option2">选项 2</option>
           <option value="option3">选项 3</option>
-        </select>
+        </select><br><br>
+         <label for="dataurl" class="select">Data URI:</label>
+         <input type="text" name="dataurl" id="dataurl" value=""  />  <br>
       </div>
       <div data-role="fieldcontain">
-        <label for="flipswitch">自动刷新站点缓存:</label>
-        <select name="flipswitch" id="flipswitch" data-role="slider">
-          <option value="off">关</option>
-          <option value="on" selected>开</option>
+        <label for="autorefresh">自动刷新站点缓存:</label>
+        <select name="autorefresh" id="autorefresh" data-role="slider">
+          <option value="off"></option>
+          <option value="on" selected></option>
+        </select><br><br>
+        <label for="pfcachetime">站点缓存有效时间（秒）:</label>
+        <input name="pfcachetime" type="text" id="pfcachetime" value="300" maxlength="5"  /><br>
+      </div>
+      <div data-role="fieldcontain">
+        <label for="notifyupdate">通知提醒每次更新:</label>
+        <select name="notifyupdate" id="notifyupdate" data-role="slider">
+          <option value="off"></option>
+          <option value="on"></option>
         </select>
       </div>
+      
       
   </div>
 </div>
 <div data-role="page" id="page5">
   <div data-role="header" data-position="fixed">
-    <h1>首次设置 - 2</h1>
-  <a href="#" data-role="button" class="ui-btn-right" id="next5">下一步 ></a>  </div><script>$('#next5').hide();</script>
+    <h1>正在写入...</h1>
+  <a href="#" data-role="button" class="ui-btn-right" id="next5">Launch</a>  </div><br>
   <div data-role="content">
-   <ul data-role="listview" data-inset="true">
+   <div id="consoletext" style="font-size:1em;">
+   <div>Web App Console [版本 1.0.0079]</div>
+   <div>Copyleft (ɔ) 2014 jsw.</div>
+   <br>
    
-   </ul>
+   </div>
   </div>
 </div>
 </body>
+<script src="jquery/jquery-2.1.1.js"></script>
+<script src="jquery/jquery.mobile-1.4.3.js"></script>
+<script>
+$(document).ready(function(e) {
+    $('#eulanext,#next4,#next5').hide();
+    $("#accept_0").on("click touchstart",function(){
+	if ($("#accept_0").is(':checked')){
+		$("#eulanext").show();
+	} else {
+		$("#eulanext").hide();
+	}
+	$("#next4").click(function(e) {
+		var ctext=$("#consoletext");
+        ctext.append("<div># ./configure</div><br>");
+		ctext.append("<div>Checking whether inputs are vaild...  </div>");
+		if (($("#accept_0").is(":checked")) && ($("#city").get(0).value!="nothing")) {
+			$("#consoletext div:last").append("done");
+			ctext.append("<div>Building & Compiling config file structure...  </div>");
+			var aUC=false,iUN=false;
+			if (document.getElementById("autorefresh").value=="on"){aUC=true;}
+			if (document.getElementById("notifyupdate").value=="on"){iUN=true;}
+			var packconfig={
+				isFirstConfiged:true,
+				isp:document.getElementById("isp").value,
+				medium:document.getElementById("medium").value,
+				mapvendor:document.getElementById("mapvendor").value,
+				city:document.getElementById("city").value,
+				dataUrl:document.getElementById("dataurl").value,
+				autoUpdateCache:aUC,
+				cachectrl_pfCachetime:document.getElementById("pfcachetime").value,
+				isUpdateNotify:iUN
+			};
+			$("#consoletext div:last").append("done");
+			ctext.append("<Br><div>Config Data:</div>");
+			ctext.append("<div>"+JSON.stringify(packconfig)+"</div><br>");
+			ctext.append("<div>Flash structure into ROM...  </div>");
+			var i;
+			for(i in packconfig){
+			    localStorage[i]=packconfig[i];	
+			}
+			$("#consoletext div:last").append("done");
+			ctext.append("<br><div>App Config completed. Press 'Launch' to continue.</div>");
+			ctext.append("<br><div># _</div>");
+			$("#next5").show();
+		} else {$("#consoletext div:last").append("Error (Refill it please eula/city)");return 0;}
+    });
+});
+		console.timeEnd("Page Ready");
+});
+</script>
 </html>

@@ -1,7 +1,6 @@
-(function($,document,window){
+﻿(function($,document,window,localStorage){
 	var lastload=document.getElementById("lastload");
 	var loadstats=document.getElementById("loadstats");
-	var currcity=document.getElementById("currcity");
 	var totalcap=document.getElementById("totalcap");
 	var totalavil=document.getElementById("totalavil");
 	var cachetime=document.getElementById("cachetimer");
@@ -13,6 +12,7 @@
     		console.log(textStatus);
 			loadstats.innerHTML=textStatus;
 			var totalc=0;
+			var i;
 			for (i in ibike.station){
 				totalc+=ibike.station[i].capacity;
 			}
@@ -39,7 +39,7 @@
 		
 	}
 	function timerSet(){
-		cachetimesec=300;
+		cachetimesec=localStorage.cachectrl_pfCachetime;
 		cachetimeemts=setInterval(timerCount,1000);
 	}
 	function timerCount(){
@@ -47,6 +47,8 @@
 			cachetimesec-=1;
 			var minute=parseInt(cachetimesec/60);
 			var second=cachetimesec % 60;
+			if (minute<=9) minute="0"+minute.toString();
+			if (second<=9) second="0"+second.toString();
 			cachetime.innerHTML=minute+":"+second;	
 		} else {
 			clearInterval(cachetimeemts);
@@ -67,4 +69,4 @@
 	window.cacheCtrl={};
 	window.cacheCtrl.updateCache=updateCache;
 	window.cacheCtrl.timerEnd=timerEnd;
-})(jQuery,document,window);
+})(jQuery,document,window,localStorage);

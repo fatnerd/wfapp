@@ -1,0 +1,34 @@
+<!doctype html>
+<html class="ui-mobile">
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link href="jquery.mobile.custom.structure-1.4.3.min.css" rel="stylesheet">
+<link href="jquery.mobile.inline-svg-1.4.3.min.css" rel="stylesheet">
+<link href="ios7-theme-v0.3.css" rel="stylesheet">
+</head>
+
+<body>
+ <div data-role="page" id="firstrun1">
+ <div data-role="header" data-position="fixed" data-tap-toggle="false"><h1>首次运行</h1></div>
+ <div class="ui-content">
+ <p id="t1" style="display:none;">Hello World.</p>
+ <p id="t2" style="display:none;">在您首次运行本应用之时，</p>
+ <p id="t3" style="display:none;">我们会在后台为您建立本地缓存，</p>
+ <p id="t4" style="display:none;">以加快您的访问速度并节省您的流量。</p>
+ <p id="t5" style="display:none;">这一段时间不会太长，也不会占用您的太多空间。</p>
+ <p id="t6" style="display:none;">请不要担心，这些缓存不会拖慢您的手机。</p>
+ <p id="t7" style="display:none;">在这一段时间里，</p>
+ <p id="t8" style="display:none;">我将会带您走进应用的日常用法说明。</p>
+ </div></div>
+</body>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script src="jquery/jquery.mobile-1.4.3.min.js"></script>
+<script>
+$(document).ready(function(e) {
+	for (var i=1;i<8;i++){
+		$("#t"+i).fadeIn(750);
+	}
+});
+</script>
+</html>
