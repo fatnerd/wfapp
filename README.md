@@ -1,3 +1,5 @@
+#This project is abandoned.
+
 Weifang iBike Application
 =====
 
